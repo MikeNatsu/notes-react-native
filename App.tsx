@@ -5,7 +5,8 @@ import { View, KeyboardAvoidingView, TextInput, StyleSheet, Text, Platform, Touc
 
 export default function App() {
   return (
-    <View style={styles.container}> n
+    // View Component
+    <View style={styles.container}> 
   <KeyboardAvoidingView
      behavior={Platform.OS === "ios" ? "padding" : "height"}
      style={styles.container}
