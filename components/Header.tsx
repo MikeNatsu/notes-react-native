@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
     },
     text:{
         color: 'white',
-        padding: 25,
+        padding: 15,
         textAlign:'center',
+        fontSize: 24, 
     }
 });
 
