@@ -29,39 +29,15 @@ const Notes = ({navigation} : {navigation : any}) => {
     return (
         <View>
             {notes.map((item : note, index: number)=>{
-                return <Text onPress={()=>{navigation.navigate('Note')}} style={styles.todo} key={index.toString()}>{item.title}</Text>;               
+                return <Text onPress={()=>{navigation.navigate('Note', {
+                    id: index,
+                    note: notes[index],
+                })}} style={styles.todo} key={index.toString()}>{item.title}</Text>;               
             })}
         </View>
     )
 
 }
-
-const Note = () => {
-    return (
-        <View>
-           
-            <Text>Hi</Text>
-        </View>
-   )
-}
-
-Navigation.registerComponent('Notes', () => Notes);
-Navigation.registerComponent('Note', ()=> Note);
-
-Navigation.events().registerAppLaunchedListener(async () =>{
-    Navigation.setRoot({
-        root: {
-            stack:{
-                children:[{
-                        component:{
-                            name: 'Notes'
-                        }
-                    }
-                ]
-            }
-        }
-    })
-})
 
 const styles = StyleSheet.create({
     todo:{
@@ -71,4 +47,5 @@ const styles = StyleSheet.create({
         margin: 20
     }
 })
+
 export default Notes
