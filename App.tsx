@@ -1,31 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useState } from 'react';
-import Header from './components/Header';
-import Todos from './components/Todos';
-export default function App() {
-  //Todos
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "New Title", 
-      text: "Hello world"
-    },
-    {
-      id: 2,
-      title: "Good Morning",
-      text: "This is not a comment but a quote that should probably touch your heart",
-    }
-  ]);
-  
+import MyStack from './components/MyStack';
+import { NavigationContainer } from '@react-navigation/native';
 
+export default function App() {
+  
   return (
     // View Component
-    <View style={styles.container}> 
-      <Header title="Notes"/>
-      <Todos todos={todos}/>
-    </View>
+    <NavigationContainer>
+      <MyStack/>
+    </NavigationContainer>
  
   );
 };
