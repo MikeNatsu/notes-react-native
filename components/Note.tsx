@@ -10,6 +10,7 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
             {console.log(note)}
             <Text> {note.title}</Text>
             <Text>{note.text}</Text>
+        
             {/* <Button title="Go back" onPress={() =>{}} ></Button> */}
         </View>
    )

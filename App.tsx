@@ -10,7 +10,7 @@ export default function App() {
   return (
     // View Component
     <NavigationContainer>
-      <MyStack/>
+      <MyStack />
     </NavigationContainer>
  
   );

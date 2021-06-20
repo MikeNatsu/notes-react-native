@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {View, Text, StyleSheet, Button} from 'react-native';
-import { Navigation } from 'react-native-navigation';
 import {useState} from 'react'
-import Header from './Header'
+import { Svg , Rect } from 'react-native-svg'
+
 
 interface note{
     id: number,
@@ -12,7 +12,7 @@ interface note{
 
 const Notes = ({navigation} : {navigation : any}) => {
 
-    const [notes, setNotes] = useState([
+    const [notes, setNotes] = useState<Array<note>>([
         {
           id: 1,
           title: "New Title", 
@@ -27,12 +27,17 @@ const Notes = ({navigation} : {navigation : any}) => {
       
 
     return (
-        <View>
+        <View >
+            
             {notes.map((item : note, index: number)=>{
-                return <Text onPress={()=>{navigation.navigate('Note', {
-                    id: index,
-                    note: notes[index],
-                })}} style={styles.todo} key={index.toString()}>{item.title}</Text>;               
+                return <View key={index.toString()}>
+                    
+                    <Text onPress={()=>{navigation.navigate('Note', {
+                        id: index,
+                        note: notes[index],
+                    })}} style={styles.todo} key={index.toString()}>{item.title}</Text>
+
+                </View> 
             })}
         </View>
     )
@@ -42,9 +47,12 @@ const Notes = ({navigation} : {navigation : any}) => {
 const styles = StyleSheet.create({
     todo:{
         color: 'white',
-        textDecorationLine:'underline',
-        fontSize: 50,
-        margin: 20
+        marginLeft: 40,
+        fontSize: 30,
+        margin: 20,
+        paddingBottom: 10,
+        borderBottomColor: 'rgba(255, 255, 255, .3)',
+        borderBottomWidth: 2,
     }
 })
 
