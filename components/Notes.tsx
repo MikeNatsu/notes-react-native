@@ -20,7 +20,7 @@ const Notes = ({navigation} : {navigation : any}) => {
           id: 2,
           title: "Good Morning",
           text: "This is not a comment but a quote that should probably touch your heart",
-        }
+        },
     ]);
       
 

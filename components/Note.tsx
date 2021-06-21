@@ -11,7 +11,11 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
         <View>
             {/* Title Container */}
             <View style={styles.titleContainer}>
-                <Text style={styles.editableTitle}>{note.title}</Text>
+               <EditableContainer
+                    style={styles.editableTitle}
+                    onChangeText={(text: string) =>{ setTitleText(text)}}
+                    value={titleText}
+               />
             </View>
             {/* Text Container */}
             <View>
