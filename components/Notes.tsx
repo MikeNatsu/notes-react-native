@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {View, Text, StyleSheet, Button} from 'react-native';
 import {useState} from 'react'
-import { Svg , Rect } from 'react-native-svg'
 
 
 interface note{
@@ -48,6 +47,7 @@ const styles = StyleSheet.create({
     todo:{
         color: 'white',
         marginLeft: 40,
+        marginRight: 30, 
         fontSize: 30,
         margin: 20,
         paddingBottom: 10,

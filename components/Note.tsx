@@ -7,7 +7,6 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
     return (
         <View>
             <Text>{id}</Text>
-            {console.log(note)}
             <Text> {note.title}</Text>
             <Text>{note.text}</Text>
         

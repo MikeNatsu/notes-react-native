@@ -1,12 +1,12 @@
 
 import React from 'react'
-import { View , StyleSheet} from 'react-native'
-import { DefaultNavigatorOptions } from '@react-navigation/native'
-import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
 import Home from './Home';
 import Note from './Note'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 const Stack = createStackNavigator();
+const editIcon = (<Icon name="edit" size={30} color="#FFF"/>);
 
 interface optionsTypes{
     defaultScreen?: StackNavigationOptions,
@@ -26,6 +26,8 @@ const screenOptions : optionsTypes = {
     },
     homeScreen:{
         headerTitleAlign:'center',
+        headerRight: () => editIcon ,
+
     },
     noteScreen:{
         
