@@ -1,12 +1,20 @@
 
 import React from 'react'
+import { StyleSheet } from 'react-native';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
 import Home from './Home';
 import Note from './Note'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
+//Styles 
+const styles = StyleSheet.create({
+    editIcon:{
+        marginRight:30, 
+    }
+})
+
 const Stack = createStackNavigator();
-const editIcon = (<Icon name="edit" size={30} color="#FFF"/>);
+const editIcon = (<Icon style={styles.editIcon}  name="edit" size={30} color="#FFF"/>); 
 
 interface optionsTypes{
     defaultScreen?: StackNavigationOptions,
@@ -30,7 +38,7 @@ const screenOptions : optionsTypes = {
 
     },
     noteScreen:{
-        
+        headerTitle: 'Back'
     }
 }
 

@@ -5485,6 +5485,11 @@ react-native-vector-icons@^8.1.0:
     prop-types "^15.7.2"
     yargs "^16.1.1"
 
+react-native-view-editable@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-view-editable/-/react-native-view-editable-1.1.1.tgz#e67bfd91f9d98a47a30aeb6c1cf8504833a65925"
+  integrity sha1-5nv9kfnZikejCutsHPhQSDOmWSU=
+
 react-native-web@~0.13.12:
   version "0.13.18"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.13.18.tgz#964f058a16521a3b9a31b091415edfef5b6ef305"
