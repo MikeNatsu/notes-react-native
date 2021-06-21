@@ -2,9 +2,9 @@
 import React from 'react'
 import { StyleSheet } from 'react-native';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
+import {useNavigation} from '@react-navigation/native'
 import Home from './Home';
 import Note from './Note'
-import Icon from 'react-native-vector-icons/FontAwesome5'
 
 //Styles 
 const styles = StyleSheet.create({
@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
     }
 })
 
+
 const Stack = createStackNavigator();
-const editIcon = (<Icon style={styles.editIcon}  name="edit" size={30} color="#FFF"/>); 
 
 interface optionsTypes{
     defaultScreen?: StackNavigationOptions,
@@ -22,27 +22,28 @@ interface optionsTypes{
     noteScreen: StackNavigationOptions,
 }
 
-const screenOptions : optionsTypes = { 
-    defaultScreen:{
-        headerTintColor:'#FFF',
-        headerStyle: {
-            backgroundColor: '#4D793E'
-        },
-        cardStyle: {
-            backgroundColor: '#22231E'
-        }
-    },
-    homeScreen:{
-        headerTitleAlign:'center',
-        headerRight: () => editIcon ,
-
-    },
-    noteScreen:{
-        headerTitle: 'Back'
-    }
-}
-
 const MyStack = () => {
+
+    const screenOptions : optionsTypes = { 
+        defaultScreen:{
+            headerTintColor:'#FFF',
+            headerStyle: {
+                backgroundColor: '#4D793E'
+            },
+            cardStyle: {
+                backgroundColor: '#22231E'
+            }
+        },
+        homeScreen:{
+            headerTitleAlign:'center'
+            
+        },
+        noteScreen:{
+            headerTitle: 'Back'
+        }
+    }
+
+
     return (
         <Stack.Navigator initialRouteName="Home" screenOptions={screenOptions.defaultScreen}>
             <Stack.Screen name="Home" options={screenOptions.homeScreen} component={Home} />

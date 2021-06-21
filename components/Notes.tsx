@@ -9,6 +9,7 @@ interface note{
 }
 
 const Notes = ({navigation} : {navigation : any}) => {
+    
 
     const [notes, setNotes] = useState<Array<note>>([
         {
@@ -26,16 +27,15 @@ const Notes = ({navigation} : {navigation : any}) => {
 
     return (
         <View >
-            
             {notes.map((item : note, index: number)=>{
-                return <View key={index.toString()}>
-                    
-                    <Text onPress={()=>{navigation.navigate('Note', {
-                        id: index,
-                        note: notes[index],
-                    })}} style={styles.todo} key={index.toString()}>{item.title}</Text>
-
-                </View> 
+                return (
+                    <View key={index.toString()}>
+                        <Text onPress={()=>{navigation.navigate('Note', {
+                            id: index,
+                            note: notes[index],
+                        })}} style={styles.todo} key={index.toString()}>{item.title}</Text>
+                    </View> 
+                )
             })}
         </View>
     )
