@@ -1,5 +1,5 @@
 Arguments: 
-  /home/mikenatsu/.nvm/versions/node/v14.17.0/bin/node /usr/local/bin/yarn add -D @types/react-native-view-editable
+  /home/mikenatsu/.nvm/versions/node/v14.17.0/bin/node /usr/local/bin/yarn add react-native-community
 
 PATH: 
   /home/mikenatsu/.fzf/bin:/home/mikenatsu/.vscode-server/bin/507ce72a4466fbb27b715c3722558bb15afa9f48/bin:/home/mikenatsu/.nvm/versions/node/v14.17.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/MinGW/bin:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/HP/IdrsOCR_15.2.10.1114/:/mnt/c/Program Files/MySQL/MySQL Shell 8.0/bin/:/mnt/c/Users/micha/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/micha/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/micha/AppData/Local/hyper/app-3.0.2/resources/bin:/mnt/c/Program Files/JetBrains/IntelliJ IDEA Community Edition 2021.1.2/bin:/mnt/c/Users/micha/AppData/Local/GitHubDesktop/bin:/mnt/c/Users/micha/AppData/Roaming/npm:/mnt/c/Program Files/heroku/bin:/mnt/c/Program Files/MySQL/MySQL Server 8.0/bin:/snap/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2freact-native-view-editable: Not found
+  Error: https://registry.yarnpkg.com/react-native-community: Not found
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66988:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140662:22)
       at Request.emit (events.js:376:20)
