@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native'
 import  AsyncStorage  from '@react-native-async-storage/async-storage' 
 import Notes from './Notes'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 //Styles 
 const styles = StyleSheet.create({
@@ -23,6 +23,9 @@ interface noteGetter{
 }
 
 const Home = ({navigation} : {navigation : any}) => {
+    const [notes, setNotes] = useState<Array<note> >();
+
+
     const storeNotes = async (value : Array<note>) =>{
         try {
             const valueJSON = JSON.stringify(value);
@@ -31,18 +34,19 @@ const Home = ({navigation} : {navigation : any}) => {
             console.log(error);
         }
     } 
-    // storeNotes([{id: 2, title: "first", text:"idk"}])
+    storeNotes([{id: 2, title: "first", text:"idk"}])
     
     const getNotes = async () => {
+
         try {
             const jsonValue = await AsyncStorage.getItem('@Notes');
-            // console.log(jsonValue != null ? JSON.parse(jsonValue): null);
+            console.log(jsonValue);       
             return jsonValue != null ? JSON.parse(jsonValue) : null; 
         } catch (error) {
             console.log(error);
         }
     }
-
+    
     const deleteNote = async (id : number) => {
         try {
             const request = await getNotes();
@@ -51,13 +55,16 @@ const Home = ({navigation} : {navigation : any}) => {
             }) ;
             storeNotes(newNotes)
         } catch (error) {
-            
+            console.log(error)
         }
     }  
-    deleteNote(1);
-
-    const [notes, setNotes] = useState<Array<note> | Promise<any>>(getNotes());
-
+    useEffect(()=>{
+        getNotes().then(data =>{
+            setNotes(data);
+            console.log(data);
+        })
+    },[])
+    console.log(notes);
     React.useLayoutEffect(()=>{
         navigation.setOptions({
             headerRight: ()=>(
@@ -75,7 +82,6 @@ const Home = ({navigation} : {navigation : any}) => {
             ),
         })
     })
-
     return (
         <ScrollView>
             <Notes navigation={navigation} />
