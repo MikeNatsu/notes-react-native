@@ -39,7 +39,8 @@ const MyStack = () => {
             
         },
         noteScreen:{
-            headerTitle: 'Back'
+            headerTitle: 'Back',
+            
         }
     }
 

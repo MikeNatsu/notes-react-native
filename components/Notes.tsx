@@ -8,22 +8,7 @@ interface note{
     text: string,
 }
 
-const Notes = ({navigation} : {navigation : any}) => {
-    
-
-    const [notes, setNotes] = useState<Array<note>>([
-        {
-          id: 1,
-          title: "New Title", 
-          text: "Hello world"
-        },
-        {
-          id: 2,
-          title: "Good Morning",
-          text: "This is not a comment but a quote that should probably touch your heart",
-        },
-    ]);
-      
+const Notes = ({navigation, notes} : {navigation : any, notes : Array<note>}) => {
 
     return (
         <View >

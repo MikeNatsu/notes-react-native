@@ -1,11 +1,27 @@
-import React, { useState } from 'react'
-import {View, Text, TextInput, StyleSheet} from 'react-native'
+import React, { useLayoutEffect, useState } from 'react'
+import {View, StyleSheet} from 'react-native'
 import EditableContainer from './EditableContainer';
+import { HeaderBackButton } from '@react-navigation/stack';
 
 const Note  = ({route , navigation } : {route : any,navigation : any}) => {
-    const { id , note } = route.params; 
+    const {id , note } = route.params; 
     const [bodyText, setBodyText] = useState<string>(note.text);
     const [titleText, setTitleText] = useState<string>(note.title); 
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft:()=>(
+                <HeaderBackButton
+                    onPress={()=>{navigation.navigate('Home',  {
+                        id: id,
+                        title: titleText, 
+                        text: bodyText,                         
+                    }) }}
+                />
+            ),
+        })
+        
+    }, [])
 
     return (
         <View>

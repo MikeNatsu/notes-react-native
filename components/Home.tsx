@@ -22,9 +22,11 @@ interface noteGetter{
     (): Array<note>;
 }
 
-const Home = ({navigation} : {navigation : any}) => {
-    const [notes, setNotes] = useState<Array<note> >();
-
+const Home = ({navigation, route   } : {navigation : any, route : any}) => {
+    const [notes, setNotes] = useState<Array<note> >([]);
+    const note = route.params;
+    console.log(note)
+    
 
     const storeNotes = async (value : Array<note>) =>{
         try {
@@ -34,7 +36,7 @@ const Home = ({navigation} : {navigation : any}) => {
             console.log(error);
         }
     } 
-    storeNotes([{id: 2, title: "first", text:"idk"}])
+    //storeNotes([{id: 2, title: "first", text:"idk"}])
     
     const getNotes = async () => {
 
@@ -61,30 +63,38 @@ const Home = ({navigation} : {navigation : any}) => {
     useEffect(()=>{
         getNotes().then(data =>{
             setNotes(data);
-            console.log(data);
         })
+        if(note !== undefined){
+            console.log(note);
+        }
+
     },[])
-    console.log(notes);
+
     React.useLayoutEffect(()=>{
         navigation.setOptions({
             headerRight: ()=>(
                 <Icon style={styles.editIcon} onPress={() =>{
-                    // navigation.navigate('Note',  {
-                    //     id: 5,
-                    //     note: {
-                    //         id: 3, 
-                    //         title: 'New Title 24',
-                    //         text: 'Insert New text'
-                    //     },
-                    // });
+                    const newNote : note = {
+                        id: notes.length, 
+                        title: "New Title", 
+                        text: "Insert new text"
+                    }
+                    console.log(notes);
+                    setNotes([...notes, newNote]);
+                    storeNotes(notes);
+                    navigation.navigate('Note',  {
+                        note: newNote,
+                    });
+
                     
                 }} name="edit" size={30} color="#FFF"/>
             ),
         })
     })
+
     return (
         <ScrollView>
-            <Notes navigation={navigation} />
+            <Notes notes={notes} navigation={navigation} />
         </ScrollView>
     )
 }
