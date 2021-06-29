@@ -5,6 +5,7 @@ import { createStackNavigator, StackNavigationOptions } from '@react-navigation/
 import {useNavigation} from '@react-navigation/native'
 import Home from './Home';
 import Note from './Note'
+import { notesContext } from '../utils/notesContext';
 
 //Styles 
 const styles = StyleSheet.create({
