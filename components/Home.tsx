@@ -18,57 +18,64 @@ interface note{
     text: string,
 }
 
-interface noteGetter{
-    (): Array<note>;
-}
 
 const Home = ({navigation, route   } : {navigation : any, route : any}) => {
-    const [notes, setNotes] = useState<Array<note> >([]);
-    const note = route.params;
-    console.log(note)
-    
+    const [notes, setNotes] = useState<Array<note> >([
+        {
+            id: 1,
+            title: "Title 1",
+            text: "text 1"
+        },
+        {
+            id: 2,
+            title: "Title 2",
+            text: "text 2",   
+        }
+    ]);
+    const noteupdate = route.params;
+    console.log(noteupdate);
 
-    const storeNotes = async (value : Array<note>) =>{
-        try {
-            const valueJSON = JSON.stringify(value);
-            await AsyncStorage.setItem('@Notes', valueJSON);
-        } catch (error) {
-            console.log(error);
-        }
-    } 
-    //storeNotes([{id: 2, title: "first", text:"idk"}])
-    
-    const getNotes = async () => {
+   // const storeNotes = async (value : Array<note>) =>{
+   //     try {
+   //         const valueJSON = JSON.stringify(value);
+   //         await AsyncStorage.setItem('@Notes', valueJSON);
+   //     } catch (error) {
+   //         console.log(error);
+   //     }
+   // } 
+   // //storeNotes([{id: 2, title: "first", text:"idk"}])
+   // 
+   // const getNotes = async () => {
 
-        try {
-            const jsonValue = await AsyncStorage.getItem('@Notes');
-            console.log(jsonValue);       
-            return jsonValue != null ? JSON.parse(jsonValue) : null; 
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    
-    const deleteNote = async (id : number) => {
-        try {
-            const request = await getNotes();
-            const newNotes = request.filter((item: note) =>{
-                item.id !== id;
-            }) ;
-            storeNotes(newNotes)
-        } catch (error) {
-            console.log(error)
-        }
-    }  
-    useEffect(()=>{
-        getNotes().then(data =>{
-            setNotes(data);
-        })
-        if(note !== undefined){
-            console.log(note);
-        }
+   //     try {
+   //         const jsonValue = await AsyncStorage.getItem('@Notes');
+   //         console.log(jsonValue);       
+   //         return jsonValue != null ? JSON.parse(jsonValue) : null; 
+   //     } catch (error) {
+   //         console.log(error);
+   //     }
+   // }
+   // 
+   // const deleteNote = async (id : number) => {
+   //     try {
+   //         const request = await getNotes();
+   //         const newNotes = request.filter((item: note) =>{
+   //             item.id !== id;
+   //         }) ;
+   //         storeNotes(newNotes)
+   //     } catch (error) {
+   //         console.log(error)
+   //     }
+   // }  
+   // useEffect(()=>{
+   //     getNotes().then(data =>{
+   //         setNotes(data);
+   //     })
+   //     if(note !== undefined){
+   //         console.log(note);
+   //     }
 
-    },[])
+   // },[])
 
     React.useLayoutEffect(()=>{
         navigation.setOptions({
@@ -81,7 +88,7 @@ const Home = ({navigation, route   } : {navigation : any, route : any}) => {
                     }
                     console.log(notes);
                     setNotes([...notes, newNote]);
-                    storeNotes(notes);
+                    //storeNotes(notes);
                     navigation.navigate('Note',  {
                         note: newNote,
                     });

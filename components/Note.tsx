@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react'
-import {View, StyleSheet} from 'react-native'
+import {View, StyleSheet, Button} from 'react-native'
 import EditableContainer from './EditableContainer';
 import { HeaderBackButton } from '@react-navigation/stack';
 
@@ -16,12 +16,13 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
                         id: id,
                         title: titleText, 
                         text: bodyText,                         
-                    }) }}
+                    }); }}
                 />
             ),
         })
         
     }, [])
+
 
     return (
         <View>
@@ -29,7 +30,7 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
             <View style={styles.titleContainer}>
                <EditableContainer
                     style={styles.editableTitle}
-                    onChangeText={(text: string) =>{ setTitleText(text)}}
+                    onChangeText={(text: string) =>{ setTitleText(text) }}
                     value={titleText}
                />
             </View>
@@ -41,7 +42,8 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
                     onChangeText={(text : string) => setBodyText(text)} 
                     value={bodyText}
                 />
-            </View>                
+            </View> 
+            <Button title="click me" onPress={()=>{console.log("Title text", titleText)}}></Button>               
         </View>
    )
 }
