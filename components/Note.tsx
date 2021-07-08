@@ -34,7 +34,6 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
                             return noteFiltered.id !== id;
                         })
 
-                        console.log(updatedNotes)
                         setNotes([...updatedNotes, {
                             id: id,
                             title: text,
@@ -52,11 +51,10 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
                     onChangeText={(text : string) => {
                         setBodyText(text);
 
-                        const updatedNotes = notes.filter((noteFiltered,index)=>{
+                        const updatedNotes = notes.filter((noteFiltered)=>{
                             return noteFiltered.id !== id;
                         })
 
-                        console.log(updatedNotes)
                         setNotes([...updatedNotes, {
                             id: id,
                             title: titleText,
@@ -66,7 +64,6 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
                     value={bodyText}
                 />
             </View> 
-            <Button title="click me" onPress={()=>{setNotes([])}}></Button>               
         </View>
    )
 }

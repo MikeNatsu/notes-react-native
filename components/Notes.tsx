@@ -10,7 +10,7 @@ const Notes = ({navigation} : {navigation : any}) => {
     
     return (
         <View >
-            {notes.map((item : note, index: number)=>{
+            {notes?.map((item : note, index: number)=>{
                 return (
                     <View key={index.toString()}>
                         <Text onPress={()=>{navigation.navigate('Note', {
