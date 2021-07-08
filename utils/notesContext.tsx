@@ -1,9 +1,29 @@
-import { useState, createContext, ReactChild, ReactNode } from 'react'
+import React,{ useState, createContext, ReactNode } from 'react'
 
-export const notesContext = createContext<null>(null);
+type Props = {
+    children: ReactNode;
 
-const notesProvider = ({children} : {children : any}) =>{
-    const [notes, setNotes ] = useState([
+}
+
+export interface note{
+    id: number;
+    title: string;
+    text: string;  
+}
+
+interface NoteContextFunction{
+    notes: note[] | undefined;
+    setNotes: (notes : note[]) => void; 
+}
+
+export const notesContext = createContext<NoteContextFunction | null >({
+    notes:undefined,
+    setNotes: ()=>{}
+});
+
+
+export default function NotesProvider ({children} : Props){ 
+    const [notes, setNotes ] = useState<note[]>([
         {
             id: 1,
             title: "Title 1",
@@ -17,8 +37,8 @@ const notesProvider = ({children} : {children : any}) =>{
 
     ]); 
     return (
-        {children}
+        <notesContext.Provider value={{notes, setNotes}}>
+            {children}
+        </notesContext.Provider>
     ); 
 }
-
-export default notesProvider; 
