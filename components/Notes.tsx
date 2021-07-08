@@ -1,22 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component, useContext } from 'react'
 import {View, Text, StyleSheet } from 'react-native';
 import {useState} from 'react'
+import { note, notesContext } from '../utils/notesContext'  
 
-interface note{
-    id: number,
-    title: string,
-    text: string,
-}
 
-const Notes = ({navigation, notes} : {navigation : any, notes : Array<note>}) => {
+const Notes = ({navigation} : {navigation : any}) => {
 
+    const {notes} = useContext(notesContext);    
+    
     return (
         <View >
             {notes.map((item : note, index: number)=>{
                 return (
                     <View key={index.toString()}>
                         <Text onPress={()=>{navigation.navigate('Note', {
-                            id: index,
+                            id: notes[index].id,
                             note: notes[index],
                         })}} style={styles.todo} key={index.toString()}>{item.title}</Text>
                     </View> 

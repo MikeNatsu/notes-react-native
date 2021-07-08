@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
-import  AsyncStorage  from '@react-native-async-storage/async-storage'
 import Notes from './Notes'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import { useState, useEffect } from 'react'
+import { note, notesContext } from '../utils/notesContext'
 
+import { v4 as uuidv4} from 'uuid'
 //Styles 
 const styles = StyleSheet.create({
     editIcon:{
@@ -12,26 +12,18 @@ const styles = StyleSheet.create({
     }
 })
 
-interface note{
-    id: number,
-    title: string,
-    text: string,
-}
+const Home = ({navigation} : {navigation : any}) => {
 
+    const {notes, setNotes} = useContext(notesContext); 
 
-const Home = ({navigation, route   } : {navigation : any, route : any}) => {
-    const [notes, setNotes] = useState<Array<note> >([
-    ]);
-    const noteupdate = route.params;
-
-   const storeNotes = async (value : Array<note>) =>{
-       try {
-           const valueJSON = JSON.stringify(value);
-           await AsyncStorage.setItem('@Notes', valueJSON);
-       } catch (error) {
-           console.log(error);
-       }
-   } 
+   //const storeNotes = async (value : Array<note>) =>{
+       //try {
+           //const valueJSON = JSON.stringify(value);
+           //await AsyncStorage.setItem('@Notes', valueJSON);
+       //} catch (error) {
+           //console.log(error);
+       //}
+   //} 
    //storeNotes([{id: 2, title: "first", text:"idk"}])
    
    //const getNotes = async () => {
@@ -71,17 +63,16 @@ const Home = ({navigation, route   } : {navigation : any, route : any}) => {
             headerRight: ()=>(
                 <Icon style={styles.editIcon} onPress={() =>{
                     const newNote : note = {
-                        id: notes.length, 
+                        id: uuidv4(), 
                         title: "New Title", 
                         text: "Insert new text"
                     }
-                    console.log(notes);
                     setNotes([...notes, newNote]);
                     //storeNotes(notes);
                     navigation.navigate('Note',  {
+                        id: newNote.id,
                         note: newNote,
                     });
-
 
                 }} name="edit" size={30} color="#FFF"/>
             ),
@@ -90,8 +81,7 @@ const Home = ({navigation, route   } : {navigation : any, route : any}) => {
 
     return (
         <ScrollView>
-
-            <Notes notes={notes} navigation={navigation} />
+            <Notes navigation={navigation} />
         </ScrollView>
     )
 }

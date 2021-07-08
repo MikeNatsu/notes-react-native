@@ -6,31 +6,31 @@ type Props = {
 }
 
 export interface note{
-    id: number;
+    id: number | string;
     title: string;
     text: string;  
 }
 
 interface NoteContextFunction{
-    notes: note[] | undefined;
+    notes: note[];
     setNotes: (notes : note[]) => void; 
 }
 
-export const notesContext = createContext<NoteContextFunction | null >({
-    notes:undefined,
-    setNotes: ()=>{}
+export const notesContext = createContext<NoteContextFunction>({
+    notes:[],
+    setNotes: ()=>{},
 });
 
 
 export default function NotesProvider ({children} : Props){ 
     const [notes, setNotes ] = useState<note[]>([
         {
-            id: 1,
+            id: 0,
             title: "Title 1",
             text: "text 1"
         },
         {
-            id: 2,
+            id: 1,
             title: "Title 2",
             text: "text 2",   
         }
