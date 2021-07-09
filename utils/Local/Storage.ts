@@ -10,13 +10,11 @@ export const storeNotes = async (value : Array<note>) =>{
     }
 } 
 
-storeNotes([{id: "1", title: "title1", text:"new text"}])
 
 export const getNotes = async () => {
 
     try {
         const jsonValue = await AsyncStorage.getItem('@Notes');
-        console.log(jsonValue);       
         return jsonValue != null ? JSON.parse(jsonValue) : null; 
     } catch (error) {
         console.log(error);

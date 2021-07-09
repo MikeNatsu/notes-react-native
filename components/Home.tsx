@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 import { note, notesContext } from '../utils/notesContext'
 
 import { v4 as uuidv4} from 'uuid'
-import { getNotes } from '../utils/Local/Storage'
+import { getNotes, storeNotes } from '../utils/Local/Storage'
 //Styles 
 const styles = StyleSheet.create({
     editIcon:{
@@ -33,8 +33,14 @@ const Home = ({navigation} : {navigation : any}) => {
                         title: "New Title", 
                         text: "Insert new text"
                     }
-                    setNotes([...notes, newNote]);
-                    //storeNotes(notes);
+                    
+                    if(notes != null){
+                        setNotes([...notes, newNote]);
+                        storeNotes([...notes, newNote])
+                    }else{
+                        setNotes([newNote]);
+                        storeNotes([newNote]);
+                    }
                     navigation.navigate('Note',  {
                         id: newNote.id,
                         note: newNote,
@@ -45,6 +51,7 @@ const Home = ({navigation} : {navigation : any}) => {
         })
     })
     return (
+        
         <ScrollView>
             <Notes navigation={navigation} />
         </ScrollView>

@@ -4,6 +4,7 @@ import EditableContainer from './EditableContainer';
 import { HeaderBackButton } from '@react-navigation/stack';
 import { notesContext } from '../utils/notesContext';
 import { v4 as uuidv4} from 'uuid'
+import { storeNotes } from '../utils/Local/Storage';
 
 const Note  = ({route , navigation } : {route : any,navigation : any}) => {
     const {id , note } = route.params; 
@@ -34,11 +35,14 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
                             return noteFiltered.id !== id;
                         })
 
-                        setNotes([...updatedNotes, {
+
+                        const newNotes = [...updatedNotes, {
                             id: id,
                             title: text,
-                            text: bodyText
-                        }] );
+                            text: bodyText,
+                        }]
+                        setNotes(newNotes);
+                        storeNotes(newNotes);
                     }}
                     value={titleText}
                />
@@ -54,12 +58,14 @@ const Note  = ({route , navigation } : {route : any,navigation : any}) => {
                         const updatedNotes = notes.filter((noteFiltered)=>{
                             return noteFiltered.id !== id;
                         })
-
-                        setNotes([...updatedNotes, {
+                        
+                        const newNotes = [...updatedNotes, {
                             id: id,
-                            title: titleText,
-                            text: text
-                        }] );
+                            title: titleText, 
+                            text:text,
+                        }]
+                        setNotes(newNotes);
+                        storeNotes(newNotes)
                     }} 
                     value={bodyText}
                 />
