@@ -5,19 +5,16 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { note, notesContext } from '../utils/notesContext';
 import { v4 as uuidv4 } from 'uuid';
 import { getNotes, storeNotes } from '../utils/Local/Storage';
+
 //Styles
 const styles = StyleSheet.create({
 	editIcon: {
 		marginRight: 30,
 	},
-	trashIcon: {
-		marginLeft: 30,
-	},
 });
 
 const Home = ({ navigation }: { navigation: any }) => {
-	const { notes, setNotes, isDeletable, enableDelete } =
-		useContext(notesContext);
+	const { notes, setNotes } = useContext(notesContext);
 
 	useEffect(() => {
 		getNotes().then((data) => {
@@ -50,15 +47,6 @@ const Home = ({ navigation }: { navigation: any }) => {
 						});
 					}}
 					name="edit"
-					size={30}
-					color="#FFF"
-				/>
-			),
-			headerLeft: () => (
-				<Icon
-					style={styles.trashIcon}
-					onPress={() => {enableDelete(!isDeletable)}}
-					name="trash"
 					size={30}
 					color="#FFF"
 				/>
