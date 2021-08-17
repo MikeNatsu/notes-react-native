@@ -1,12 +1,6 @@
 # Notes App
 A simple notes app :) 
 
-# 
-
-![Main](/images/main.png)
-
-![new-note](/images/new-note.png)
-
 # Getting started
 
 ## Installation
@@ -31,6 +25,12 @@ yarn start // Opens Expo CLI
 yarn android // Opens Android emulator (if there is any) 
 yarn ios // Opens IOS emulator (if there's any)
 ```
+
+# 
+
+![Main](/images/main.png)
+
+![new-note](/images/new-note.png)
 
 
 
