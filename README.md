@@ -22,8 +22,8 @@ npm install --global expo-cli
 
 ```
 yarn start // Opens Expo CLI
-yarn android // Opens Android emulator (if there is any) 
-yarn ios // Opens IOS emulator (if there's any)
+yarn android // Opens Android emulator 
+yarn ios // Opens IOS emulator 
 ```
 
 # 
